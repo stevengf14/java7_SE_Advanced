@@ -4,7 +4,7 @@ package ec.com.learning.java7.sortCollectionsComparator;
  *
  * @author Steven Guamán - October 2022
  */
-public class Person {
+public class Person implements Comparable<Person> {
 
     private int id;
     private String name;
@@ -38,6 +38,12 @@ public class Person {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public int compareTo(Person person) {
+        // return person.getAge() - this.age;
+        return this.name.compareTo(person.getName());
     }
 
 }

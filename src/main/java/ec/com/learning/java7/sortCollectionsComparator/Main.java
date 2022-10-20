@@ -34,6 +34,7 @@ public class Main {
         Collections.reverse(listString);
         System.out.println(listString);
 
+        // Comparator
         List<Person> people = new ArrayList<>();
         people.add(new Person(1, "Steven", 45));
         people.add(new Person(2, "Andres", 61));
@@ -53,8 +54,16 @@ public class Main {
                 }
             }
         });
+        System.out.println("*****Comparator*****");
         people.forEach(p -> {
             System.out.println(p.getName());
+        });
+
+        // Comparable
+        Collections.sort(list);
+        System.out.println("*****Comparable*****");
+        people.forEach(p -> {
+            System.out.println(p.getAge() + "-" + p.getName());
         });
     }
 }
