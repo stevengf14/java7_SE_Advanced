@@ -1,7 +1,8 @@
-package ec.com.learning.java7.sortCollections;
+package ec.com.learning.java7.sortCollectionsComparator;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -38,9 +39,22 @@ public class Main {
         people.add(new Person(2, "Andres", 61));
         people.add(new Person(3, "German", 12));
         people.add(new Person(4, "Gregorio", 23));
-        
-        // Collections.sort(people);
 
-        System.out.println(people);
+        // Collections.sort(people, new NameComparator());
+        Collections.sort(people, new Comparator<Person>() {
+            @Override
+            public int compare(Person per1, Person per2) {
+                if (per1.getAge() > per2.getAge()) {
+                    return 1;
+                } else if (per1.getAge() < per1.getAge()) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+        });
+        people.forEach(p -> {
+            System.out.println(p.getName());
+        });
     }
 }

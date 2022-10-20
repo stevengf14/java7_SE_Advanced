@@ -1,4 +1,4 @@
-package ec.com.learning.java7.sortCollections;
+package ec.com.learning.java7.sortCollectionsComparator;
 
 /**
  *
