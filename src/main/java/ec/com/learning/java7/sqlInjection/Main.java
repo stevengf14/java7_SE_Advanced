@@ -48,7 +48,6 @@ public class Main {
             System.out.println("Query success");
         }
         return result;
-
     }
 
     public static void main(String[] args) throws SQLException {
