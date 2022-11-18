@@ -13,7 +13,7 @@ public class Main {
     public void readWithBufferedInputStream() {
         long init = System.currentTimeMillis();
         int value = 16 * 1024;
-        try (InputStream fis = new BufferedInputStream(new FileInputStream("src\\main\\java\\ec\\com\\learning\\java7\\fileInputStream\\file.gif"), value)) {
+        try (InputStream fis = new BufferedInputStream(new FileInputStream("src\\main\\java\\ec\\com\\learning\\java7\\bufferedInputStream\\file.gif"), value)) {
             int i = fis.read();
             while (i != -1) {
                 // System.out.println((char) i);
