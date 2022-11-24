@@ -1,6 +1,9 @@
 package ec.com.learning.java7.NIO2;
 
 import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
@@ -59,6 +62,41 @@ public class Main {
         Files.write(path, text.getBytes());
     }
 
+    public void readWithChannel() throws IOException {
+        RandomAccessFile file = new RandomAccessFile("src\\main\\java\\ec\\com\\learning\\java7\\NIO2\\file.txt", "rw");
+        FileChannel channel = file.getChannel();
+
+        long size = channel.size();
+        ByteBuffer buf = ByteBuffer.allocate((int) size);
+
+        int bytesRead = channel.read(buf);
+        while (bytesRead != -1) {
+            System.out.println("Readed: " + bytesRead);
+            buf.flip();
+            while (buf.hasRemaining()) {
+                System.out.print((char) buf.get());
+            }
+            buf.clear();
+            bytesRead = channel.read(buf);
+        }
+        file.close();
+    }
+
+    public void writeWithChannel() throws IOException {
+        RandomAccessFile file = new RandomAccessFile("src\\main\\java\\ec\\com\\learning\\java7\\NIO2\\file.txt", "rw");
+        FileChannel channel = file.getChannel();
+        String text = "Java 7 SE Advanced!";
+        ByteBuffer buf = ByteBuffer.allocate(128);
+        buf.clear();
+        buf.put(text.getBytes());
+
+        buf.flip();
+        while (buf.hasRemaining()) {
+            channel.write(buf);
+        }
+        file.close();
+    }
+
     public static void main(String[] args) throws IOException {
         Main app = new Main();
         //app.fileOperations("exists");
@@ -66,8 +104,10 @@ public class Main {
         //app.fileOperations("copy");
         //app.fileOperations("move");
         //app.fileOperations("delete");
-        app.write();
-        app.read();
+        //app.write();
+        //app.read();
+        app.writeWithChannel();
+        app.readWithChannel();
     }
 
 }
