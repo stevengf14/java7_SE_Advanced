@@ -45,13 +45,29 @@ public class Main {
         }
     }
 
+    public void read() throws IOException {
+        Path path = Paths.get("src\\main\\java\\ec\\com\\learning\\java7\\NIO2\\file.txt");
+        byte[] bytes = Files.readAllBytes(path);
+        for (byte b : bytes) {
+            System.out.println((char) b);
+        }
+    }
+
+    public void write() throws IOException {
+        Path path = Paths.get("src\\main\\java\\ec\\com\\learning\\java7\\NIO2\\file.txt");
+        String text = "Java 7 Advanced";
+        Files.write(path, text.getBytes());
+    }
+
     public static void main(String[] args) throws IOException {
         Main app = new Main();
         //app.fileOperations("exists");
         //app.fileOperations("create");
         //app.fileOperations("copy");
         //app.fileOperations("move");
-        app.fileOperations("delete");
+        //app.fileOperations("delete");
+        app.write();
+        app.read();
     }
 
 }
