@@ -1,4 +1,4 @@
-package ec.com.learning.java7.threadRunnable;
+package ec.com.learning.java7.threads;
 
 /**
  *
@@ -14,7 +14,7 @@ public class RThread implements Runnable{
 
     @Override
     public void run() {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 5; i++) {
             System.out.println("[R]Executing thread id: " + id);
         }
     }
